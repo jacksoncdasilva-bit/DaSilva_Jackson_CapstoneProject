@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overview</title>
+    <title>Products</title>
     <link rel="stylesheet" href="project.css">
+
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css">
+
+    <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+
 </head>
+<div hidden id="snipcart" data-api-key="Njg1ZDVkMTgtYWEwMi00M2Y1LWI5N2YtZGNmMmJkMDNmYThjNjM5MTI4NTUyMjk5NjAwNzcx"></div>
 <body class="page-background">
 
     <header>
@@ -35,32 +41,30 @@
             <img src="HomePage.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
-                <h1>Overview</h1>
+                <h1>Products</h1>
                 <p>
-                    The process of creating a multiplayer game heavily relies on what is known as replication. 
+                    This is the products page
                 </p>
-                <p>
-                    When you play multiplayer games with your
-                    friends, it may seem like things just seamlessly happen and you can just be thrown into a world with your friend and everything works, however games
-                    are specifically programmed to replicate specific events. 
-                </p>
-                <p>
-                    For example, if you were to program a game for singleplayer and then throw multiple people into the same server,
-                    you will notice that many things won't work properly, or even at all.
-                </p>
-                <p>
-                    In order to make stuff actually sync between the players, you will need to learn how to replicate events between players to keep everything in sync.
-                </p>
-                <p>
-                    Continue to the next page to learn more about replicating an in game event!
-                </p>
+
+                <div class="product-card">
+                    <h2>UE Multiplayer Starter Pack</h2>
+                    <img src="product1.png" alt="Product Image" width="200">
+
+                    <p>Unreal Engine Multiplayer Crash Course with example projects.</p>
+
+                    <p><strong>$9.99</strong></p>
+
+                    <button class="snipcart-add-item"
+                        data-item-id="ue-multiplayer-pack"
+                        data-item-name="UE Multiplayer Starter Pack"
+                        data-item-price="9.99"
+                        data-item-url="/products.html"
+                        data-item-description="Unreal Engine Multiplayer Crash Course with example projects.">
+                        Add to Cart
+                    </button>
+                </div>
             </div>
 
-            <!-- Footer-->
-            <footer class="content-footer">
-                <a href="index.html" class="back-button">← Back</a>
-                <a href="replicatingInGameEvent.html" class="continue-button">Continue →</a>
-            </footer>
         </main>
 
     </div>
