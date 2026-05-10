@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Page showing how to allow users to replicate movement of actors in Unreal Engine.">
-    <title>Replicating Actors</title>
+    <title>Physics Replication</title>
     <link rel="stylesheet" href="project.css">
 </head>
 <body class="page-background">
@@ -33,38 +33,51 @@
 
         <!-- Main Content -->
         <main class="content-area">
-            <img src="HomePage.png" alt="Content Image" class="content-image">
+            <img src="PhysicsHomePage.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
-                <h1>Actor Movement Replication</h1>
-                <p>This is a test page for replicating actor movement.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
+                <h1>Actor Movement and Physics Replication</h1>
+                <p>In the last page we learned about the basics of replicating an actor, however we ran into an issue where the physics doesn't replicate.</p>
+                <p class="large-gap">If you paid attention to the different options presented on the details panel for actors, you may have noticed there is also an option
+                    called "Replicate Movement". Depending on what kind of actor you will have, this isn't always necessary but this can automate a lot of the process for us,
+                    and is also necessary if we want accurate physics replication. If you haven't found the option this is where it is located in the details panel:
+                </p>
+
+                <img src="ReplicateMovement.png" alt="Replicate Movement" class="example-image">
+                <p>Now this may seem really easy, however there is a few things to note when using "Replicate Movement".</p>
+
+                <p class="large-gap">Firstly, it is usually good to avoid replicating movement if it is not necessary, as replicating movement uses more bandwidth
+                    as the server has to constantly update all the clients on the position and rotation of movement replicated actors. In most situations it is usually possible
+                    to avoid it unless you are specifically making a physics replicated actor.
+                </p>
+
+                <p>Other actors, like for example if you have a door that you want to open and close, you can just have enable movement replication to do the work for you, however
+                    the movement won't be very smooth on clients and it will use unnecessary bandwith that we can save by using another method.
+                </p>
+
+                <p>For example, if we want to open a door, it would be better practice to just enable "replicates" for the door, and when the server opens or closes the door,
+                    it can just send a queue to the clients in the form of a multicast to open or close the door. That way all the server has to do is tell the clients that the door
+                    is opening, rather than constantly updating them with unnecessary transform and rotation information that the clients could handle themselves.</p>
+
+                <p>However for the case of this example we will enable it as I will want physics replication for the cube.</p>
+
+                <p class="large-gap">There is one important thing to note though when doing physics replication, or using "Replicate Movement" at all.</p>
+                <p>In order to use physics replication on an object, the object has to be the root of the actor. For example it would look like this:</p>
+
+                <img src="RedCube.png" alt="Content Image" class="example-image">
+
+                <p>For my cube actor, we can see that the static mesh which is named "RedCube" is the root of the actor. It is really important to know that
+                    actors in Unreal Engine usually will come with "DefaultSceneRoot" as the root, which will break physics replication. If you run into this problem
+                    all you would need to do is replace the default root with the object that you want to have physics replication for.
+                </p>
+
+                <p class="large-gap">This is all for movement and physics replication though, continue to the next page to learn about replicating variables!</p>
             </div>
 
             <!-- Footer-->
             <footer class="content-footer">
                 <a href="replicatingActors.html" class="back-button">← Back</a>
-                <a href="replicatingVariables.html" class="continue-button">Continue →</a>
+                <a href="replicatingVariables.html" class="continue-button">Continue to Replicating Variables →</a>
             </footer>
         </main>
 

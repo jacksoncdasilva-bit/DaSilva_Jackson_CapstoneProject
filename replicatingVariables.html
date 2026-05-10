@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Teaches user how to replicate specific variables and what uses they have.">
-    <title>Replicating Actors</title>
+    <title>Replicating Variables</title>
     <link rel="stylesheet" href="project.css">
 </head>
 <body class="page-background">
@@ -33,38 +33,47 @@
 
         <!-- Main Content -->
         <main class="content-area">
-            <img src="HomePage.png" alt="Content Image" class="content-image">
+            <img src="VariablesHome.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
                 <h1>Replicating Variables</h1>
-                <p>This is a test page for replicating variables.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
+                <p>Replicating Variables is a relatively straightforward process in Unreal Engine.</p>
+
+                <p class="large-gap">Similarly to replicating custom events, we can enable replication on a variable
+                    by clicking on it and enabling replication in the details panel for the variable as shown here:
+                </p>
+
+                <img src="VariableOptions.png" alt="Variable Options" class="example-image">
+                <p>We can see we have 3 options being None, Replicated, and RepNotify. We can ignore RepNotify for now and will just focus on standard replication.</p>
+
+                <p class="large-gap">By replicating a variable, the server can automatically update clients any time that variable is updated on any replicated actor. It should be noted that only
+                    the server host has the authority to change a replicated variable.
+                </p>
+
+                <p class="large-gap">We can use this for something like opening a door for example. Here I have code for opening a door:</p>
+
+                <img src="DoorInteract.png" alt="Door Code" class="example-image">
+                <p>What this code is doing, everytime the door is interacted with, the DoorOpen? boolean is swapped, then the server tells the clients to either open or close the door.</p>
+
+                <p>The state of the door will be replicated, as it is controlled by a replicated boolean that is set on the server.</p>
+
+                <p class="large-gap">If you were curious how the interact code works, and how clients can interact despite the "interact" event only being accessible to the server, it looks like this:</p>
+
+                <img src="InteractLogic.png" alt="Interact Logic" class="example-image">
+
+                <p>Basically, a client can do a sphere trace when pressing E which if an interactable object is detected, it will send a copy of that object to the server and tell it to interact with it.
+                    This is possible because it is done on the character blueprint, meaning the client will have authority to send server commands here.
+                </p>
+
+                <p>From there, the server will flip the door open boolean which will replicate to everyone, then it will tell everyone to either open or close the door.</p>
+
+                <p class="large-gap">This about wraps it up for replicated variables, continue to the next page to learn about using RepNotify!</p>
             </div>
 
             <!-- Footer-->
             <footer class="content-footer">
                 <a href="actorMovementReplication.html" class="back-button">← Back</a>
-                <a href="repNotify.html" class="continue-button">Continue →</a>
+                <a href="repNotify.html" class="continue-button">Continue to RepNotify→</a>
             </footer>
         </main>
 

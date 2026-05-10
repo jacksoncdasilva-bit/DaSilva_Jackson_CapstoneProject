@@ -33,38 +33,58 @@
 
         <!-- Main Content -->
         <main class="content-area">
-            <img src="HomePage.png" alt="Content Image" class="content-image">
+            <img src="ReplicatingEventHome.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
                 <h1>Replicating an In-Game Event</h1>
-                <p>This is a test page for replicating in-game event content.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
+                <p>To replicate an event in game, first we need to understand the structure for how our multiplayer game will work.
+                    For the purposes of this tutorial, we will be assuming that 1 player will be our host (the server), and the other will be a client
+                    that is connected to the server.
+                </p>
+                <p>The typical workflow that we will need to know is that the server is the heart of our game and any replicated event will need to be sent over the server
+                    so the server can then send it back to everyone else. So what this would look like would be client -> server -> everyone.
+                </p>
+
+                <p class="large-gap">Take a look at this example:</p>
+
+                <img src="ExampleReplicatedEvent.png" alt="Replication Example" class="example-image">
+                <p>What we have here is the client presses the 1 key on their keyboard, which is then followed by it sending a queue to the server to send a message, and then the server sends a queue
+                    to everyone to do a print string which reads "Hello Everyone".
+                </p>
+                <p class="large-gap">In order to change the replication option for a custom event, you can change it in the details panel after selecting the event:</p>
+
+                <img src="ReplicationOptions.png" alt="Replication Options" class="example-image">
+                <p>Replication Options Guide:</p>
+                <p class="large-gap">Not Replicated - No replication will take place, will remain client-side only.</p>
+
+                <p class="large-gap">Multicast - Replicates to everyone, however only the server has permission to execute a multicast.</p>
+
+                <p class="large-gap">Run on Server - Will execute on the server. Useful if you want an event triggered by a client to get replicated.</p>
+
+                <p class="large-gap">Run on owning Client - Will execute on the client that owns the actor. Useful if for example you have an event that runs on the server
+                    that was triggered by a client, and you want a client to have some sort of reaction, like dying for example.
+                </p>
+
+                <p class="large-gap"> **IMPORTANT NOTE**
+                </p>
+
+                <p>Run on Server events can only be triggered from a client if the client owns the actor it is being triggered from. For example a client can't trigger an event to run on the server
+                    from a random object in the world that is already being controlled by the server, but something the client owns, like their character and anything attached to their character (such as the character itself,
+                    the player controller, player state, etc), can trigger events to run on the server.
+                </p>
+                <p>A client also can't execute a multicast, or run on owning client event. Those are limited to being called by the server.</p>
+                <p>An example workflow to get an event from one client to another, say you have a client that wants to send a private message to another client,
+                    you would take a reference to the player you want to send a message to, give it to the server, and the server would then send the message to that specific player.
+                </p>
+
+                <p class="large-gap"> Proceed to the next page to learn about replicating actors!
+                </p>
             </div>
 
             <!-- Footer-->
             <footer class="content-footer">
                 <a href="overview.html" class="back-button">← Back</a>
-                <a href="replicatingActors.html" class="continue-button">Continue →</a>
+                <a href="replicatingActors.html" class="continue-button">Continue to Replicating Actors →</a>
             </footer>
         </main>
 

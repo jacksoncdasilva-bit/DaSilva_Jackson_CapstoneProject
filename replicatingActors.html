@@ -33,38 +33,43 @@
 
         <!-- Main Content -->
         <main class="content-area">
-            <img src="HomePage.png" alt="Content Image" class="content-image">
+            <img src="Actor.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
                 <h1>Replicating Actors</h1>
-                <p>This is a test page for replicating actors.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
+                <p>Replicating an actor in Unreal Engine is luckily pretty straightforward.</p>
+                <p>If we are to take an actor that we want to have replication enabled for, you can simply open up the editor for the actor, and in the details panel enable "replicates", as shown here:</p>
+                <img src="ReplicateActor.png" alt="Replicate Actor" class="example-image">
+                <p>It will be located near the top of the details, and we can leave everything else default for now.</p>
+
+                <p class="large-gap">It is important to note that if an actor is set to not replicate at all, even if you were to run a multicast or any form of replicated code inside the actor,
+                    it will not replicate unless you enable "replicates" in the actor details.
+                </p>
+
+                <p class="large=gap">From here the replication is pretty straightforward. One thing to keep in mind is that unless specified otherwise, actors will be owned by the server meaning all replicated
+                    logic must be handled by the server.
+                </p>
+                <p>
+                    One very neat thing about setting an actor to replicate, is that actors spawned on the server will automatically replicate over to clients. Here is an example of something we can do:
+                </p>
+
+                <img src="SpawnMyActor.png" alt="Spawn Actor" class="example-image">
+                <p>In this example I have an actor that is just a red cube, and when the user presses G it will tell the server to spawn one near the center of the world.</p>
+                <p>However because the actor is set to be replicated, this will automatically replicate and here is what this looks like in practice:</p>
+
+                <img src="SpawningActors.png" alt="Spawning Actors" class="example-image">
+                <p>When either of the users presses G, we can get many of the cubes to spawn for both players. If the cube was set to not replicate it would only appear on the server.</p>
+                <p class="large-gap">However there is one problem still, and it is that the replicated cubes simulate physics and can be pushed around, but the physics aren't replicated
+                    meaning their positions will desync when pushed around.
+                </p>
+
+                <p class="large-gap">Continue to the next page to learn about movement and physics replication!</p>
             </div>
 
             <!-- Footer-->
             <footer class="content-footer">
                 <a href="replicatingInGameEvent.html" class="back-button">← Back</a>
-                <a href="actorMovementReplication.html" class="continue-button">Continue →</a>
+                <a href="actorMovementReplication.html" class="continue-button">Continue to Actor Movement Replication →</a>
             </footer>
         </main>
 

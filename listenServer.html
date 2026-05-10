@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Listen server page.  Describes how to test using listen server in Unreal Engine.">
-    <title>Replicating Actors</title>
+    <title>Test Environment</title>
     <link rel="stylesheet" href="project.css">
 </head>
 <body class="page-background">
@@ -33,38 +33,37 @@
 
         <!-- Main Content -->
         <main class="content-area">
-            <img src="HomePage.png" alt="Content Image" class="content-image">
+            <img src="TestingHome.png" alt="Content Image" class="content-image">
 
             <div class="text-content">
-                <h1>Setting up a test environment</h1>
-                <p>This is a test page for setting up a test environment using a listen server.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
-                <p>More content will lie here.</p>
+                <h1>Setting up a Test Environment</h1>
+                <p>So now that we've learned some of the basics of creating a multiplayer game, how can we test to make sure our code is working properly?</p>
+
+                <p class="large-gap">Luckily, Unreal makes this really easy for this and there is a built in option for testing local multiplayer straight in the editor!</p>
+
+                <p class="large-gap">If we go over to the play options which we would normally use to test the game and use the drop down, we can see this list of options:</p>
+
+                <img src="PlayOptions.png" alt="PlayingOptions" class="example-image">
+
+                <p>Here we can see at the bottom there are multiplayer options, and the 2 most important ones for us will be Play Standalone and Play as Listen Server.</p>
+
+                <p class="large-gap">What playing as a listen server does, is it basically means that your PC will host a joinable session and you will be playing as the server host.</p>
+                <p>By selecting a number of players higher than 1 and choosing "Play as Listen Server", it will automatically give us multiple instances of the game running all within the same server.</p>
+                <p>This is extremely useful for quick multiplayer testing as with those options selected, all we need to do is press play and we can get straight to testing.</p>
+
+                <p class="large-gap">One thing to note, it is usually important to take note of which window is acting as your server, which can be indicated by the top window above each instance as shown here:</p>
+
+                <img src="NetModeServer.png" alt="ServerNetMode" class="example-image">
+
+                <p>For clients it will show the same thing but client instead of server, that way you can keep track of how the game reacts on clients vs your server.</p>
+
+                <p class="large-gap">Once you've done your testing and your game is working, now we can move on to creating joinable sessions!</p>
             </div>
 
             <!-- Footer-->
             <footer class="content-footer">
                 <a href="repNotify.html" class="back-button">← Back</a>
-                <a href="creatingSessions.html" class="continue-button">Continue →</a>
+                <a href="creatingSessions.html" class="continue-button">Continue to Creating Sessions →</a>
             </footer>
         </main>
 
